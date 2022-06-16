@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 20%;
+            background-color: aliceblue;
+            padding: 3%;
+        }
+        .container input{
+            padding: 10px;
+        }
+        .cancelbtn, .signupbtn{
+            background-color: white;
+            padding: 2px 5px 2px 5px;
+            border: 1px solid black;
+            border-radius: 2px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<form class="modal-content">
+    <div class="container">
+        <h1>Log In</h1>
+        <p>Please fill in this form to log in to your account.</p>
+        <hr>
+        <label for="email"><b>Email</b></label><br>
+        <input type="text" placeholder="Enter Email" name="email" required>
+        <br><br>
+        <label for="psw"><b>Password</b></label><br>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        
+        <br><br>
+        <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        </label>
+
+        <br><br>
+        <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Log In</button>
+        <br>
+        <p>If you are new here, click here to <span id="lb"><a href="/signup.html">Sign Up</a></span></p>
+        </div>
+    </div>
+</form>
+
+<script>
+
+</script>
+
+</body>
+</html>

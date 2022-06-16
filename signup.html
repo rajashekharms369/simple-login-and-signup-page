@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .container{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            width: 20%;
+            background-color: aliceblue;
+            padding: 3%;
+        }
+        .container input{
+            padding: 10px;
+        }
+        .cancelbtn, .signupbtn{
+            background-color: white;
+            padding: 2px 5px 2px 5px;
+            border: 1px solid black;
+            border-radius: 2px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<form class="modal-content">
+    <div class="container">
+        <h1>Sign Up</h1>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <label for="email"><b>Email</b></label><br>
+        <input type="text" placeholder="Enter Email" id="name" name="email" required>
+        <br><br>
+        <label for="psw"><b>Password</b></label><br>
+        <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+        <br><br>
+        <label for="psw-repeat"><b>Repeat Password</b></label><br>
+        <input type="password" id="repassword" placeholder="Repeat Password" name="psw-repeat" required>
+        
+        <br><br>
+        <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+        </label>
+
+        <br><br>
+        <div class="clearfix">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+        <br>
+        <p>If you are already signed up then click here to <span id="lb"><a href="/login.html">Login</a></span></p>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    if(localStorage.getItem('userdata')==null){
+        alert('Hello world')
+        localStorage.setItem('userdata',JSON.stringify([]))
+    }
+    let a = localStorage.getItem('userdata')
+    a = JSON.parse(a)
+    if(a==null){
+        a = [{email:'Hello world',password:'Hello world'}]
+    }
+    document.querySelector('.signupbtn').addEventListener('click',function(event){
+        event.preventDefault();
+        let e = document.querySelector('#email')
+        let p;
+        console.log(document.querySelector('#password').value==document.querySelector('#repassword').value)
+        if(document.querySelector('#password').value == document.querySelector('#repassword').value){
+            p = document.querySelector('#password').value
+            
+            for(i=0; i<a.length; i++){
+                if(a[i].email == e){
+                    alert('This email is already registered, please click on Login')
+                }
+                if(i==a.length-1){
+                    a.push({email:e,password:p})
+                    localStorage.setItem('userdata',JSON.stringify(a))
+                    alert('Your sign up is successful, please click on Log in to continue.')
+                }
+            }
+        }
+        else{
+            alert('Please check your password')
+        }
+    })
+</script>
+</body>
+</html>
